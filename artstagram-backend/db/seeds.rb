@@ -1,3 +1,5 @@
+require 'rest-client'
+
 pics = [
   335536,
   336318,
@@ -25,12 +27,12 @@ pics = [
   459123
 ]
 
-pics.each do |objectID|
-   fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/#{objectID}`)
-   .then(res => res.json())
-   .then(createPics)
+def createPics(picData)
+  Picture.create(url: picData)
 end
 
-function createPics(picData){
-  Picture.create(url: picData.primaryImageSmall);
-}
+pics.each do |objectID|
+   m = RestClient.get "https://collectionapi.metmuseum.org/public/collection/v1/objects/#{objectID}"
+   m_object = JSON.parse(m)
+   createPics(m_object["primaryImageSmall"])
+end
