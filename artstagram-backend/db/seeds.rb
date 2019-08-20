@@ -27,12 +27,12 @@ pics = [
   459123
 ]
 
-def createPics(picData)
-  Picture.create(url: picData)
+def createPics(url, title)
+  Picture.create(url: url, title: title)
 end
 
 pics.each do |objectID|
    m = RestClient.get "https://collectionapi.metmuseum.org/public/collection/v1/objects/#{objectID}"
    m_object = JSON.parse(m)
-   createPics(m_object["primaryImageSmall"])
+   createPics(m_object["primaryImageSmall"], m_object["title"])
 end
