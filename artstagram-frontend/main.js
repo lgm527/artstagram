@@ -3,6 +3,11 @@ document.addEventListener('DOMContentLoaded', function(){
 const picContainer = document.getElementsByClassName('ui three cards')[0];
 
   //fetch pics from backend
+  // fetch('http://localhost:3000/likes')
+  // .then(res => res.json())
+  // .then(renderLikes)
+
+  //fetch likes from backend
   fetch('http://localhost:3000/pictures')
   .then(res => res.json())
   .then(renderPics)
@@ -17,10 +22,11 @@ const picContainer = document.getElementsByClassName('ui three cards')[0];
                         <div class="content">
                             <span class="right floated">
                             <i class="heart outline like icon"></i>
-                            17 likes
+                            <!-- insert likes here -->${pic.likes.length} likes
                             </span>
-                        <i class="comment icon"></i>3 comments
-                        </div>`
+                        <i class="comment icon"></i>
+                        <!-- insert likes here --> comments
+                        </div>`;
       picContainer.append(picDiv);
   }
 
@@ -28,7 +34,6 @@ const picContainer = document.getElementsByClassName('ui three cards')[0];
   function renderPics(pics){
     pics.forEach(renderPic)
   }
-
 
 
 
