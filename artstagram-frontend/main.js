@@ -27,7 +27,7 @@ const picContainer = document.getElementsByClassName('ui three cards')[0];
                         <span id='comments_count'> ${pic.comments.length} comments </span>
                         </div>`;
       picContainer.append(picDiv);
-      
+
   }
 
   //render all pictures
@@ -43,7 +43,6 @@ const picContainer = document.getElementsByClassName('ui three cards')[0];
     let modalListener = document.getElementById("pics-container");
     modalListener.addEventListener("click", function(){
       if(event.target.className == "trigger"){
-        console.log(event.target.dataset.id);
         let picId = event.target.dataset.id;
         updateModal(picId);
         $('.ui.modal').modal('show'); // Only jquery line in the whole app.
@@ -51,9 +50,20 @@ const picContainer = document.getElementsByClassName('ui three cards')[0];
     })
   }
 
+function handleFetch(data){
+  let modal = document.getElementById("modal-content");
+  modal.innerHTML = `<img src="${data.url}">`
+  data.comments.forEach(function(comment){
+    modal.innerHTML += `<li>${comment.content}</li>`
+  })
+}
+
+//fetch and throw on DOM
   function updateModal(id){
     let modal = document.getElementById("modal-content");
-    modal.innerText = "Picture id: " + id;
+    fetch(`http://localhost:3000/pictures/${id}`)
+    .then(res => res.json())
+    .then(handleFetch)
   }
 
   //add like feature to stable parent:
