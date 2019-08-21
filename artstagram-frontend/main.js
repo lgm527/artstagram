@@ -7,7 +7,7 @@ const picContainer = document.getElementsByClassName('ui three cards')[0];
   .then(res => res.json())
   .then(renderPics)
 
-  //create and render a picture on DOM
+  //render a picture on DOM
   function renderPic(pic){
     let picDiv = document.createElement('div')
     picDiv.className = 'ui card'
@@ -20,7 +20,7 @@ const picContainer = document.getElementsByClassName('ui three cards')[0];
                             <span id='likes' data-id="${pic.id}"> ${pic.likes.length} </span>
                             </span>
                         <i class="comment icon"></i>
-                        <!-- insert likes here --> comments
+                        <span id='comments_count'> ${pic.comments.length} comments </span>
                         </div>`;
       picContainer.append(picDiv);
   }
