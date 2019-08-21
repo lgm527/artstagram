@@ -4,14 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
-    <script type="text/javascript" src="main.js">
-
-    </script>
+    <link rel="stylesheet" href="style.css">
     <title>Artstagram</title>
 </head>
+
 <body>
 
     <div class="ui container">
@@ -20,7 +17,7 @@
         </div>
         <div class="ui section divider"></div>
         <div class="row">
-            <div class="ui three cards">
+            <div class="ui three cards" id="pics-container">
 
  <!-- Pictures will be appended here -->
 
@@ -28,6 +25,19 @@
             </div>
         </div>
     </div>
+
+
+          <div class="ui modal">
+            <i class="close icon"></i>
+            <div id="modal-content" class="content">
+              
+            </div>
+          </div>
+          
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    <script type="text/javascript" src="main.js"></script>
 
 </body>
 </html>
