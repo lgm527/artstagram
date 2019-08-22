@@ -13,7 +13,22 @@
 
     <div class="ui container">
         <div class="row">
-            <h1 class="ui header">Artstagram</h1>
+            <div id="logo-container"><img id="logo" src="logo.png" alt=""><span id="logo-text" class="ui header">Artstagram</span></div>
+            <!-- User dropdown-->
+            
+                  <p><div class="ui selection dropdown" id="user-selector">
+                        <input type="hidden" name="gender">
+                        <i class="dropdown icon"></i>
+                        <div id="logged-user" class="default text">User</div>
+                        <div id="user-list" class="menu">
+
+                        </div>
+                      </div>
+                      <span id="current-user"></span>
+                    </p>
+              
+              <!-- End user dropdown-->
+
         </div>
         <div class="ui section divider"></div>
         <div class="row">
@@ -30,7 +45,18 @@
           <div class="ui modal">
             <i class="close icon"></i>
             <div id="modal-content" class="content">
-              
+                <div id="image-container"><img class="ui fluid image" src="" alt="" id="the-image"></div>
+                <div id="comments-container" class="comments">
+                    <ul id="comments">
+                    </ul>
+                    <div class="comment-form ui form">
+                        <div class="field">
+                            <form id="comment-form" class="ui form">
+                                <input id="insert-comment" type="text" placeholder="Add your comment">
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
           </div>
           
