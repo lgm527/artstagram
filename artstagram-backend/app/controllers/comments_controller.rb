@@ -6,11 +6,12 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = Comment.new
+    @comment = Comment.create(comment_params)
   end
 
   def show
-
+    @comment = Comment.find(params[:id])
+    render json: @comment
   end
 
   def update
@@ -19,6 +20,12 @@ class CommentsController < ApplicationController
 
   def destroy
 
+  end
+
+  private
+
+  def comment_params
+    params.require(:comment).permit(:content, :picture_id)
   end
 
 end
