@@ -25,5 +25,10 @@ pics.each do |objectID|
    createPics(m_object["primaryImageSmall"], m_object["title"])
 end
 
-User.create(name: 'Laurell')
-User.create(name: 'John')
+User.create(name: 'Laurell');
+User.create(name: 'John');
+
+Comment.create(picture_id: 1, user_id: 1, content: 'First comment!')
+Comment.create(picture_id: 1, user_id: 2, content: 'My all-time favorite!')
+Comment.create(picture_id: 1, user_id: 2, content: 'This changed my life')
+Comment.create(picture_id: 1, user_id: 1, content: 'I love this')
