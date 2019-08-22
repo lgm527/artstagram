@@ -20,3 +20,13 @@
     margin: 0 auto;
     margin-top: 470px;
 }
+
+ul {
+    list-style-type: none;
+}
+
+li:before {
+    content: '\1F4AC';
+    margin-left: -20px;
+    margin-right: 10px;
+}

@@ -51,9 +51,11 @@ const picContainer = document.getElementsByClassName('ui three cards')[0];
 
 function handleFetch(data){
   let modal = document.getElementById("the-image");
+  let commentList = document.getElementById("comments")
+  commentList.innerHTML = ""; // cleaning previous comments before loading new ones
   modal.src = data.url
   data.comments.forEach(function(comment){
-    modal.innerHTML += `<li>${comment.content}</li>`
+    comments.innerHTML += `<li>${comment.content}</li>`
   })
 }
 
