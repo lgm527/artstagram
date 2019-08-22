@@ -24,7 +24,6 @@ document.addEventListener('DOMContentLoaded', function(){
       userList.append(newUser)
     }
 
-
     $('.ui.dropdown').dropdown({
       onChange: function(value, text, selectedItem){
         let userId = selectedItem[0].dataset.id
@@ -128,7 +127,19 @@ function addCommentToServer(comment, picId, userId){
       picture_id: picId,
       user_id: userId
     })
+
   }).then(resp => resp.json)
+
+  }
+
+function handleFetch(data){
+  let modal = document.getElementById("the-image");
+  let commentList = document.getElementById("comments")
+  commentList.innerHTML = ""; // cleaning previous comments before loading new ones
+  modal.src = data.url
+  data.comments.forEach(function(comment){
+    comments.innerHTML += `<li>${comment.content}</li>`
+  })
 }
 
 
