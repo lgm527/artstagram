@@ -27,7 +27,6 @@ const picContainer = document.getElementsByClassName('ui three cards')[0];
                         <span id='comments_count'> ${pic.comments.length} comments </span>
                         </div>`;
       picContainer.append(picDiv);
-
   }
 
   //render all pictures
@@ -51,10 +50,12 @@ const picContainer = document.getElementsByClassName('ui three cards')[0];
   }
 
 function handleFetch(data){
-  let modal = document.getElementById("modal-content");
-  modal.innerHTML = `<img src="${data.url}">`
+  let modal = document.getElementById("the-image");
+  let commentList = document.getElementById("comments")
+  commentList.innerHTML = ""; // cleaning previous comments before loading new ones
+  modal.src = data.url
   data.comments.forEach(function(comment){
-    modal.innerHTML += `<li>${comment.content}</li>`
+    comments.innerHTML += `<li>${comment.content}</li>`
   })
 }
 
