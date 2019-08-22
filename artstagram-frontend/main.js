@@ -16,7 +16,7 @@ const picContainer = document.getElementsByClassName('ui three cards')[0];
                             <img data-id="${pic.id}" class="trigger" src="${pic.url}">
                         </div>
                         <div class="content">
-                        <a data-id="${pic.id}" class="header">${pic.title}</a>
+                        <p data-id="${pic.id}" class="header">${pic.title}</p>
                             <span class="right floated">
                             <i class="heart outline like icon"></i>
                             17 likes
@@ -46,6 +46,16 @@ const picContainer = document.getElementsByClassName('ui three cards')[0];
       }
     })
   }
+
+function handleFetch(data){
+  let modal = document.getElementById("the-image");
+  modal.src = data.url
+  data.comments.forEach(function(comment){
+    modal.innerHTML += `<li>${comment.content}</li>`
+  })
+}
+
+//fetch and throw on DOM
 
   function updateModal(id){
     let modal = document.getElementById("modal-content");
