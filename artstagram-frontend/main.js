@@ -99,24 +99,16 @@ document.addEventListener('DOMContentLoaded', function(){
   function updateComments(event){
     let form = document.getElementById("comment-form");
     let userId = document.getElementById("current-user").dataset.id 
-    let picId = document.getElementById("comments").dataset.id
+    let picId = document.getElementById("comments").dataset.picId
     event.preventDefault();
     comment = document.getElementById("insert-comment");
     comment = comment.value;
-    addCommentToServer(comment, picId, userId);
-    addSingleComment(comment);
-    form.reset();
-  }
 
-  function addSingleComment(comment){
-    let commentList = document.getElementById("comments")
-    newLi = document.createElement("li");
-    newLi.innerText = comment;
-    commentList.appendChild(newLi);
-}
-
-function addCommentToServer(comment, picId, userId){
-  fetch("", {
+    console.log("comment" + comment);
+    console.log("pic " + picId)
+    console.log("user " + userId)
+    
+    fetch("http://localhost:3000/comments", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -129,8 +121,38 @@ function addCommentToServer(comment, picId, userId){
     })
 
   }).then(resp => resp.json)
+    
 
+    addSingleComment(comment);
+    form.reset();
   }
+
+  function addSingleComment(comment){
+    let commentList = document.getElementById("comments")
+    newLi = document.createElement("li");
+    newLi.innerText = comment;
+    commentList.appendChild(newLi);
+}
+
+// function addCommentToServer(comment, picId, userId){
+//   console.log(comment);
+//   console.log(picId);
+//   console.log(userId);
+//   fetch("http://localhost:3000/comments", {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//       //"Accept": "Application/json"
+//     },
+//     body: JSON.stringify({
+//       content: comment,
+//       picture_id: picId,
+//       user_id: userId
+//     })
+
+//   }).then(resp => resp.json)
+
+//   }
 
 function handleFetch(data){
   let modal = document.getElementById("the-image");
@@ -147,6 +169,8 @@ function handleFetch(data){
   //fetch and throw on DOM
     function updateModal(id){
       let modal = document.getElementById("modal-content");
+      let ul = document.getElementById("comments");
+      ul.setAttribute("data-pic-id", id);
       fetch(`http://localhost:3000/pictures/${id}`)
       .then(res => res.json())
       .then(handleFetch)
