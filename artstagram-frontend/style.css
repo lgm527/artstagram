@@ -1,0 +1,74 @@
+.container img {
+    cursor: pointer;
+}
+
+#logo {
+    width: 65px;
+    padding: 20px 0 0 0;
+}
+#logo-text {
+    font-family: 'Oleo Script Swash Caps', cursive;
+    font-size: 70px;
+}
+
+#logo-container {
+    display: table;
+    vertical-align: middle;
+}
+
+#modal-content {
+    padding:0;
+    height:624px;
+    display: grid;
+    margin: 0;
+    grid-template-columns: 495px 405px;;
+}
+
+#image-container {
+    height:624px;
+    width: 495px;
+}
+
+.comment-form {
+    /* position: absolute; */
+    width: 380px;
+    margin: 0 auto;
+    margin-top: 70px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+li:before {
+    content: '\1F4AC';
+    margin-left: -20px;
+    margin-right: 10px;
+
+}
+
+/* #current-user {
+    visibility: hidden;
+} */
+
+#the-image {
+    object-fit:fill;
+}
+
+#comments-container {
+    width:405px;
+    height: 624px;
+
+}
+
+
+#list-container {
+    height:500px;
+    overflow:scroll;
+    overflow-x:hidden
+}
+
+.comment_yall {
+    font-weight: 800;
+    line-height: 35px;
+}
