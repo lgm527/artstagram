@@ -134,26 +134,6 @@ document.addEventListener('DOMContentLoaded', function(){
     commentList.appendChild(newLi);
 }
 
-// function addCommentToServer(comment, picId, userId){
-//   console.log(comment);
-//   console.log(picId);
-//   console.log(userId);
-//   fetch("http://localhost:3000/comments", {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//       //"Accept": "Application/json"
-//     },
-//     body: JSON.stringify({
-//       content: comment,
-//       picture_id: picId,
-//       user_id: userId
-//     })
-
-//   }).then(resp => resp.json)
-
-//   }
-
 function handleFetch(data){
   let modal = document.getElementById("the-image");
   let commentList = document.getElementById("comments")
