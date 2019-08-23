@@ -47,9 +47,9 @@ li:before {
 
 }
 
-/* #current-user {
+#current-user {
     visibility: hidden;
-} */
+}
 
 #the-image {
     object-fit:fill;
