@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function(){
                               <span id='likes' data-id="${pic.id}"> ${pic.likes.length} </span>
                               </span>
                           <i class="comment icon"></i>
-                          <span id='comments_count'> ${pic.comments.length} comments </span>
+                          <span class='comments_count' data-id='${pic.id}'> ${pic.comments.length}</span> comments
                           </div>`;
         picContainer.append(picDiv);
     }
@@ -75,12 +75,12 @@ document.addEventListener('DOMContentLoaded', function(){
   .modal({
     blurring: true
   })
-  .modal('show')
-;
+  .modal('show');
         }
       })
     }
 
+    //getting comments
   function handleFetch(data){
     let modal = document.getElementById("the-image");
     let commentList = document.getElementById("comments")
@@ -118,8 +118,15 @@ document.addEventListener('DOMContentLoaded', function(){
   })
 
     addSingleComment(content, userName);
-
     form.reset();
+
+    let commentCount = document.getElementsByClassName('comments_count');
+    Array.from(commentCount).forEach(function(comment){
+      if (comment.dataset.id == picId) {
+        comment.innerText++;
+      }
+    });
+    
   }
 
   function addSingleComment(content, userName){
