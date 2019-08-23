@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function(){
   const picContainer = document.getElementsByClassName('ui three cards')[0];
-  
+
     //fetch pics from backend
     fetch('http://localhost:3000/pictures')
     .then(res => res.json())
@@ -32,11 +32,11 @@ document.addEventListener('DOMContentLoaded', function(){
         currentUser.innerText = document.getElementById("logged-user").innerText;
       }
     });
-  
-  
+
+
     //create and fill in html with json
     // added by john: picture titles and Data attribs for use with the listener
-  
+
     function renderPic(pic){
       let picDiv = document.createElement('div')
       picDiv.className = 'ui card'
@@ -54,16 +54,16 @@ document.addEventListener('DOMContentLoaded', function(){
                           </div>`;
         picContainer.append(picDiv);
     }
-  
+
     //render all pictures
     function renderPics(pics){
       pics.forEach(renderPic);
       addListeners(pics);
     }
-  
-  
+
+
     // Addition by John: Listener for the modals
-  
+
     function addListeners(pic){
       let modalListener = document.getElementById("pics-container");
       modalListener.addEventListener("click", function(){
@@ -80,16 +80,15 @@ document.addEventListener('DOMContentLoaded', function(){
         }
       })
     }
-  
+
   function handleFetch(data){
-    // console.log(data)
     let modal = document.getElementById("the-image");
     let commentList = document.getElementById("comments")
     commentList.innerHTML = ""; // cleaning previous comments before loading new ones
     modal.src = data.url
     commentList.setAttribute("data-id", data.id)
-    data.comments.forEach(function(comment){
-      comments.innerHTML += `<li>${comment.user.name} ${comment.content}</li>`
+    data.comments.forEach(function(data){
+      comments.innerHTML += `<li><span class='comment_yall'>${data.user.name}</span> ${data.content}</li>`
     })
   }
 
@@ -98,54 +97,39 @@ document.addEventListener('DOMContentLoaded', function(){
 
   function updateComments(event){
     let form = document.getElementById("comment-form");
-    let userId = document.getElementById("current-user").dataset.id 
+    let userId = document.getElementById("current-user").dataset.id
     let picId = document.getElementById("comments").dataset.picId
     event.preventDefault();
-    comment = document.getElementById("insert-comment");
-    comment = comment.value;
+    let comment = document.getElementById("insert-comment");
+    let content = comment.value;
+    let userName = document.getElementById("current-user").innerText
 
-    console.log("comment" + comment);
-    console.log("pic " + picId)
-    console.log("user " + userId)
-    
     fetch("http://localhost:3000/comments", {
     method: "POST",
     headers: {
-      "Content-Type": "application/json",
-      "Accept": "Application/json"
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
     },
     body: JSON.stringify({
-      content: comment,
-      picture_id: picId,
-      user_id: userId
+      'content': content,
+      'picture_id': Number(picId),
+      'user_id': Number(userId)
     })
+  })
 
-  }).then(resp => resp.json)
-    
+    addSingleComment(content, userName);
 
-    addSingleComment(comment);
     form.reset();
   }
 
-  function addSingleComment(comment){
+  function addSingleComment(content, userName){
     let commentList = document.getElementById("comments")
     newLi = document.createElement("li");
-    newLi.innerText = comment;
+    newLi.innerText = `${userName} ${content}`;
     commentList.appendChild(newLi);
 }
 
-function handleFetch(data){
-  let modal = document.getElementById("the-image");
-  let commentList = document.getElementById("comments")
-  commentList.innerHTML = ""; // cleaning previous comments before loading new ones
-  modal.src = data.url
-  data.comments.forEach(function(comment){
-    comments.innerHTML += `<li>${comment.content}</li>`
-  })
-}
 
-
-  
   //fetch and throw on DOM
     function updateModal(id){
       let modal = document.getElementById("modal-content");
@@ -155,12 +139,12 @@ function handleFetch(data){
       .then(res => res.json())
       .then(handleFetch)
     }
-  
+
     //add like feature to stable parent:
     picContainer.addEventListener('click', function(event){
       if (event.target.classList.contains("heart")){
         let picId = event.target.dataset.id;
-  
+
         fetch("http://localhost:3000/likes",{
           method: 'POST',
           headers: {
@@ -175,7 +159,6 @@ function handleFetch(data){
         event.target.nextElementSibling.innerText++;
       }
     })
-  
-  
+
+
   })   //end of DOMContentLoaded
-  

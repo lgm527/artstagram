@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
 
   def show
     @comment = Comment.find(params[:id])
-    render json: @comment
+    render json: @comment, :include => {:user => {:only => :name}}
   end
 
   def update

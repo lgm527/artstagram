@@ -7,7 +7,7 @@ class PicturesController < ApplicationController
 
   def show
     @picture = Picture.find(params[:id])
-    render json: @picture, include: [:comments]
+    render json: @picture.as_json(:include => {:comments => {:include => :user}})
   end
 
 end
