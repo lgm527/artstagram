@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function(){
     modal.src = data.url
     commentList.setAttribute("data-id", data.id)
     data.comments.forEach(function(comment){
-      comments.innerHTML += `<li>${comment.content}</li>`
+      comments.innerHTML += `<li>${comment.user.name} ${comment.content}</li>`
     })
   }
 
