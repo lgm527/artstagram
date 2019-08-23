@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', function(){
   function addSingleComment(content, userName){
     let commentList = document.getElementById("comments")
     newLi = document.createElement("li");
-    newLi.innerText = `${userName} ${content}`;
+    newLi.innerHTML = `<span class='comment_yall'>${userName}</span> ${content}`;
     commentList.appendChild(newLi);
 }
 
