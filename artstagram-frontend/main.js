@@ -103,7 +103,8 @@ document.addEventListener('DOMContentLoaded', function(){
     let comment = document.getElementById("insert-comment");
     let content = comment.value;
     let userName = document.getElementById("current-user").innerText
-
+    // console.log(userName)
+    addSingleComment(content, userName);
     fetch("http://localhost:3000/comments", {
     method: "POST",
     headers: {
@@ -116,9 +117,6 @@ document.addEventListener('DOMContentLoaded', function(){
       'user_id': Number(userId)
     })
   })
-
-    addSingleComment(content, userName);
-
     form.reset();
   }
 
