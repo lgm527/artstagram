@@ -34,7 +34,7 @@
     /* position: absolute; */
     width: 380px;
     margin: 0 auto;
-    margin-top: 170px;
+    margin-top: 70px;
 }
 
 ul {
@@ -64,7 +64,7 @@ li:before {
 
 
 #list-container {
-    height:400px;
+    height:500px;
     overflow:scroll;
     overflow-x:hidden
 }
