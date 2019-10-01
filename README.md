@@ -1,5 +1,7 @@
 # artstagram
 
+User can view artwork by Van Gogh, as well as like, and leave comments.
+
 # Demo
 
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=d22s48KLxHo
